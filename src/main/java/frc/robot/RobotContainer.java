@@ -23,11 +23,16 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  // Joysticks
+  public static Joystick r_joystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
+  public static Joystick l_joystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
+
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   final ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
+  
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -42,15 +47,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // make joysticks
-    Joystick r_joystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
-    Joystick l_joystick = new Joystick(Constants.LEFT_JOYSTICK_CHANNEL);
-
     // make buttons
     Button r_shooterButton = new JoystickButton(r_joystick, Constants.R_SHOOTER_BUTTON);
 
     // bind commands to buttons
-    r_shooterButton.whenHeld(m_shooterCommand); 
+    // r_shooterButton.whenHeld(m_shooterCommand); 
   }
 
   /**
